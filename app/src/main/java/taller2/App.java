@@ -89,7 +89,7 @@ public class App {
      * 
      */
 
-    public static String Calcular_tip (float valor_consumo){
+     public static String Calcular_tip (float valor_consumo){
         try {
             if (valor_consumo>0){
                 final float valor_propina = 0.10f;
@@ -100,7 +100,7 @@ public class App {
                 propina = valor_consumo * valor_propina;
                 impuesto = valor_consumo * impuesto_consumo;
                 total_a_pagar = valor_consumo + propina + impuesto;
-                String total = "Valor comida: " + valor_consumo + ", Valor propina: " + propina + ", Valor ipoconsumo: " + impuesto + ", Total a pagar: " + total_a_pagar;
+                String total = "valor comida: $" + valor_consumo + " - valor propina $" + propina + " - valor impoconsumo $" + impuesto + " - total a pagar " + total_a_pagar;
                 return total;
             } 
             else{
@@ -185,14 +185,19 @@ public class App {
 
     public static float Calcular_para_ganar (float nota1, float nota2, float nota3, float nota4, float por1, float por2, float por3, float por4, float por5){
         try {
-            float promedio_actual;
-            float nota_faltante;
-            final byte puntaje_minimo = 3;
-            float nota_para_ganar;
-            promedio_actual = (nota1*por1 + nota2*por2 + nota3*por3 + nota4*por4);
-            nota_faltante = puntaje_minimo - promedio_actual;
-            nota_para_ganar = nota_faltante/por5;
-            return nota_para_ganar;
+            if(por1+por2+por3+por4+por5==1){
+                float promedio_actual;
+                float nota_faltante;
+                final byte puntaje_minimo = 3;
+                float nota_para_ganar;
+                promedio_actual = (nota1*por1 + nota2*por2 + nota3*por3 + nota4*por4);
+                nota_faltante = puntaje_minimo - promedio_actual;
+                nota_para_ganar = nota_faltante/por5;
+                return nota_para_ganar;
+            }
+            else{
+                return -1;
+            }          
         } 
         catch (Exception e) {
             return -1;
